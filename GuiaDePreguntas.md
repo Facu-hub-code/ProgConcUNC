@@ -58,7 +58,24 @@ Mientras que el metodo **run()** es el encargado de ejecutar el codigo del hilo.
 - El hilo se encuentra en el estado **Ready**.
 
 ## U3. Sincronizacion basada en memoria compartida
-- Productor consumidor con semaforos
+En esta seccion si bien hay preguntas estan muy relacionadas al concepto de cada tipo ed sincronizacion, entonces solo vamos a definir cada una a modo resumen.
+
+Los metodos de sincronizacion basada en memoria compartida (ordenados por complejidad) son:
+
+- **Establecer secciones criticas:** Mecanismos que permitiendo la ejecucion de un bloque de codigo en forma segura.
+    - **Synchronized:** Es el mas simple de implementar, ya que solo se necesita agregar la palabra reservada **synchronized** en la firma del metodo. Este metodo es el mas costoso en cuanto a tiempo de ejecucion, ya que se necesita obtener el lock del objeto.
+
+    - **Lock:** Es un mecanismo mas complejo de implementar, ya que se necesita crear un objeto de tipo **Lock** y luego utilizar los metodos **lock()** y **unlock()** para obtener y liberar el lock del objeto. Este metodo es mas rapido que el metodo **synchronized**.
+    
+- **Mediante semaforos:** Tienen una variable entera que indica la cantidad de recursos disponibles y se comparte entre los hilos.
+    - **Semaphore:** Es un mecanismo mas complejo de implementar, ya que se necesita crear un objeto de tipo **Semaphore** y luego utilizar los metodos **acquire()** y **release()** para obtener y liberar el lock del objeto. Este metodo es mas rapido que el metodo **Lock**.
+
+    - **CycleBarrier:** Es un mecanismo mas complejo de implementar, ya que se necesita crear un objeto de tipo **CycleBarrier** y luego utilizar el metodo **await()** para obtener el lock del objeto. Este metodo es mas rapido que el metodo **Lock**.
+
+- **Mediante Monitores:** Son modulos de alto nivel que encapsulan los metodos de sincronizacion.
+    - **Monitor:** Es un mecanismo mas complejo de implementar, ya que se necesita crear un objeto de   tipo **Monitor** y luego utilizar los metodos **wait()** y **notify()** para obtener y liberar el lock del objeto. Este metodo es mas rapido que el metodo **Lock**.
+
+Productor consumidor con semaforos
     - Cuantos semaforos se necesitan para el modelo productor-consumidor con buffer de huecos y de items?
     - A ese semaforo con cuanto lo puedo inicializar?
 - Politicas de los semaforos/monitores no se bien.    
