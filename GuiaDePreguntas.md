@@ -1,19 +1,61 @@
 # Guia de preguntas
 ## U1. Conceptos Basicos
-- **Sistemas reactivos**
-Un sistema reactivo es aquel que responde a estímulos externos en un tiempo determinado.
-- **El testing es suficiente?**
-NO, el testing no es suficiente, ya que no se puede probar todas las posibles combinaciones de estados y eventos.
-- Traza (interleaving) y t-invariantes.
-- vivacidad y deadlock
-- Un problema concurrente se ejecuta siempre igual?
-- Paralelismo y concurrencia
+
+**Sistemas reactivos**
+- Un sistema reactivo es aquel que responde a estímulos externos en un tiempo determinado.
+
+**El testing es suficiente?**
+- NO, el testing no es suficiente, ya que no se puede probar todas las posibles combinaciones de estados y eventos.
+- Como el testing no es suficiente tenemos que modelar el sistema para poder probarlo. Por ejemplo con redes de petri.
+
+**Que es la Traza o interleaving y que relacion tiene con los t-invariantes?**
+- La traza o interleaving de un sistema concurrente es la secuencia de eventos o transiciones que ocurren en el sistema.
+- Los t-invariantes son invariantes de transicion, que son invariantes que se cumplen (siempre) en cada uno de los pasos de la traza.
+
+**Que es la vivacidad y el deadlock?**
+- La **Vivacidad** en los sistemas concurrentes se refiere a que el sistema va a avanzar, es decir, que no se quedara trabado en un estado.
+
+- El **DeadLock** o interbloqueo es un estado en el que se encuentran dos o mas procesos o hilos. Se encuentran bloqueandose mutuamente, es decir, que ninguno puede avanzar debido a que esta esperando que el otro termine o envie un mensaje.
+
+**Un problema concurrente se ejecuta siempre igual?**
+- NO, un problema concurrente puede ejecutarse de diferentes formas, debido al indeterminismo que existe a la hora de ejecutarse los hilos.
+
+**Diferencias entre Paralelismo y concurrencia**
+- El **Paralelismo** es la ejecucion de dos o mas tareas al mismo tiempo, es decir, que se ejecutan en simultaneo.
+- La **Concurrencia** es la ejecucion de dos o mas tareas en un mismo intervalo de tiempo, es decir, que se ejecutan en forma alternada.
+
+**Nota:** Esas son algunas de las preguntas/disparadores mas comunes respecto a los Conceptos Basicos. Se recomienda leer la bibliografia para poder responder mas preguntas.
+
 
 ## U2. Manejo basico de threads
-- Diferencia entre el start y run de un thread.
-- Procesos vs Hilos
-- Estados de los hilos y los procesos
-- Si el procesador no le da tiempo de ejecucion, en que estado esta?
+
+**Diferencia entre el metodo start() y run() de un hilo**
+- En el lenguaje de programacion Java metodo **start()** es el encargado de crear un nuevo hilo y ejecutar el metodo **run()** en el nuevo hilo. 
+Mientras que el metodo **run()** es el encargado de ejecutar el codigo del hilo.
+
+**Procesos vs Hilos**
+- Un **Proceso** es un programa en ejecucion, es decir, que es una instancia de un programa en ejecucion. Un proceso tiene su propio espacio de memoria, es decir, que no comparte memoria con otros procesos.
+- Un **Hilo** es una unidad de ejecucion dentro de un proceso. Un proceso puede tener uno o mas hilos. Los hilos comparten el espacio de memoria del proceso.
+
+- **Estados de los hilos**
+    - **New:** El hilo fue creado pero no se ha iniciado.
+    - **Ready:** El hilo esta creado y listo para ser ejecutado.
+    - **Running:** El hilo esta siendo ejecutado.
+    - **Blocked:** El hilo esta bloqueado, es decir, que esta esperando que se libere un recurso.
+    - **Sleeping:** El hilo esta durmiendo, es decir, que esta esperando que pase un tiempo determinado.
+    - **Waiting:** El hilo esta esperando que otro hilo termine de ejecutarse y notifique.
+    - **Dead:** El hilo termino de ejecutarse.
+
+.
+- **Estados de los Procesos**:
+    - **New:** El proceso fue creado pero no se ha iniciado.
+    - **Ready:** El proceso esta listo para ser ejecutado.
+    - **Running:** El proceso esta siendo ejecutado.
+    - **Blocked:** El proceso esta bloqueado, es decir, que esta esperando que se libere un recurso.
+    - **Dead:** El proceso termino de ejecutarse.
+
+**Si el procesador no le da tiempo de ejecucion al hilo, en que estado se encuentra?**
+- El hilo se encuentra en el estado **Ready**.
 
 ## U3. Sincronizacion basada en memoria compartida
 - Productor consumidor con semaforos
