@@ -1,7 +1,9 @@
 # Guia de preguntas
 ## U1. Conceptos Basicos
-- Sistemas reactivos
-- testing insuficiente
+- **Sistemas reactivos**
+Un sistema reactivo es aquel que responde a estímulos externos en un tiempo determinado.
+- **El testing es suficiente?**
+NO, el testing no es suficiente, ya que no se puede probar todas las posibles combinaciones de estados y eventos.
 - Traza (interleaving) y t-invariantes.
 - vivacidad y deadlock
 - Un problema concurrente se ejecuta siempre igual?
