@@ -1,2 +1,11 @@
-# ProgConcUNC
-Repositorio con material de ayuda para la asignatura de ProgramacionConcurrente de la UNC.
+# Hola 👋 Prog.Concurrente UNC, estos son algunos recursos para aprobar
+
+La idea principal de este Repositorio/Proyecto OpenSource es tener un lugar donde poder encontrar material de ayuda para la asignatura de **Programacion Concurrente** de la UNC. 
+
+## Material para el Coloquio
+- Resumen super completo de [@akmsw](https://github.com/akmsw)
+- Guia de preguntas tipicas de [@facu-hub-code](https://github.com/Facu-hub-code)
+- Preguntero de [varios estudiantes](https://docs.google.com/document/d/1dMvB69jC6K6AQv6SJNST09_SznFLcs0rXoGxXJOS_n8/edit) 
+
+
+Las modificaciones y recomendaciones son mas que bienvenidas.
