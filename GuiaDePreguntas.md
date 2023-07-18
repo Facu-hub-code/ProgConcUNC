@@ -1,9 +1,4 @@
-# Guia para aprobar Programacion Concurrente
-El coloquio consiste en responder preguntas teoricas. Link del temario [Temas Concurrente](https://docs.google.com/document/d/1dMvB69jC6K6AQv6SJNST09_SznFLcs0rXoGxXJOS_n8/edit) y analizar una **Red de Petri**. 
-
-Esta es una suerte de guia de respuestas a las preguntas teoricas y de como analizar una red de petri. Con ayuda de Copilot :)
-
-
+# Guia de preguntas
 ## U1. Conceptos Basicos
 - Sistemas reactivos
 - testing insuficiente
