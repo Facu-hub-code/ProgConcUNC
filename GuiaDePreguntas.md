@@ -58,49 +58,45 @@ Mientras que el metodo **run()** es el encargado de ejecutar el codigo del hilo.
 - El hilo se encuentra en el estado **Ready**.
 
 ## U3. Sincronizacion basada en memoria compartida
-En esta seccion si bien hay preguntas estan muy relacionadas al concepto de cada tipo ed sincronizacion, entonces solo vamos a definir cada una a modo resumen.
+**Como establecer una seccion critica?**
+- Con la palabra reservada **synchronized** en la firma del metodo. Este metodo es el mas costoso en cuanto a tiempo de ejecucion, ya que se necesita obtener el lock del objeto.
 
-Los metodos de sincronizacion basada en memoria compartida (ordenados por complejidad) son:
+**Que es un lock?**
+- Es un mecanismo mas complejo de implementar, ya que se necesita crear un objeto de tipo **Lock** y luego utilizar los metodos **lock()** y **unlock()** para obtener y liberar el lock del objeto. Este metodo es mas rapido que el metodo **synchronized**. Todas las clases que heredan de *Object* tienen un lock asociado.
 
-- **Establecer secciones criticas:** Mecanismos que permitiendo la ejecucion de un bloque de codigo en forma segura.
-    - **Synchronized:** Es el mas simple de implementar, ya que solo se necesita agregar la palabra reservada **synchronized** en la firma del metodo. Este metodo es el mas costoso en cuanto a tiempo de ejecucion, ya que se necesita obtener el lock del objeto.
+**Que es un Semaphore?**
+- Es un mecanismo un poco mas complejo de implementar, pero de mejor rendimiento. Se necesita crear un **objeto** de tipo **Semaphore** y luego utilizar los metodos **acquire()** y **release()** para obtener y liberar el lock del objeto. Este metodo es mas rapido que el metodo **Lock**. Se debe setear una variable entera que representa la cantidad de permisos/recursos que se pueden obtener del semaforo. 
 
-    - **Lock:** Es un mecanismo mas complejo de implementar, ya que se necesita crear un objeto de tipo **Lock** y luego utilizar los metodos **lock()** y **unlock()** para obtener y liberar el lock del objeto. Este metodo es mas rapido que el metodo **synchronized**.
-    
-- **Mediante semaforos:** Tienen una variable entera que indica la cantidad de recursos disponibles y se comparte entre los hilos.
-    - **Semaphore:** Es un mecanismo mas complejo de implementar, ya que se necesita crear un objeto de tipo **Semaphore** y luego utilizar los metodos **acquire()** y **release()** para obtener y liberar el lock del objeto. Este metodo es mas rapido que el metodo **Lock**.
+**Desventajas del uso de semaforos**
+- Las directivas estan esparcidas por el codigo
 
-    - **CycleBarrier:** Es un mecanismo mas complejo de implementar, ya que se necesita crear un objeto de tipo **CycleBarrier** y luego utilizar el metodo **await()** para obtener el lock del objeto. Este metodo es mas rapido que el metodo **Lock**.
+**Cuantos semaforos se necesitan para el modelo productor-consumidor con buffer de huecos y de items?**
+- Para el modelo productor-consumidor con buffer de huecos se necesitan 2 semaforos, uno para el buffer y otro para el mutex.
 
-- **Mediante Monitores:** Son modulos de alto nivel que encapsulan los metodos de sincronizacion.
-    - **Monitor:** Es un mecanismo mas complejo de implementar, ya que se necesita crear un objeto de   tipo **Monitor** y luego utilizar los metodos **wait()** y **notify()** para obtener y liberar el lock del objeto. Este metodo es mas rapido que el metodo **Lock**.
+**Puedo inicializar un semaforo con 0? De que me sirve?**
+- Si, se puede inicializar con 0, y sirve para que el hilo que quiera acceder al semaforo se quede esperando hasta que otro hilo lo libere.
 
-Productor consumidor con semaforos
-    - Cuantos semaforos se necesitan para el modelo productor-consumidor con buffer de huecos y de items?
-    - A ese semaforo con cuanto lo puedo inicializar?
-- Politicas de los semaforos/monitores no se bien.    
+- **Semaforos** 
+    - Es un objeto? -> Si. 
+    - Tiene dueño? -> No, no tiene dueño ya que no es como un lock.
+    - Puedo elegir que hilo quiero que despierte en un semaforo? -> No, no se puede elegir que hilo quiero que despierte, ya que el semaforo lo despierta el primero que llega.
+    - Tiene sentido inicializar un semaforo en 0? -> Si, tiene sentido inicializar un semaforo en 0, ya que el hilo que quiera acceder al semaforo se quedara esperando hasta que otro hilo lo libere.
+    - Si hay mas de un hilo, tengo forma de saber a cual despertare? -> No recuerda si hay alguna forma de configurar el semaforo para configurar esas polticas. Que datos les tengo que dar a uno cuando inicializo en java? Puedo pasar un valor 0? (no se)
+    - Los semaforos se pueden configurar para que sean una FIFO? -> Si, los semaforos se pueden configurar para que sean una FIFO de la siguiente manera: 
+    ```java
+    Semaphore semaforo = new Semaphore(0, true);
+    ```
+    - Que es el ownership de un semaforo? -> El ownership de un semaforo es el hilo que lo tiene tomado.
 
-- **Semaforos**
-    - como funciona, 
-    - es un objeto?, 
-    - tiene dueño? No, no tiene dueño ya que no es como un lock
-    - Puedo elegir que hilo quiero que despierte en un semaforo?
-    - Tiene sentido inicializar un semaforo en 0?
-    - Productor consumidor, dibujar, semaforos por buffer, importa orden de acceso a los semaforos? Si, primero buffer, y despues mutex
-    - Ventajas de la cola de cortesia, para que sirve? Cola de cortesia sirve para cederle tiempo a uno que venga urgido
-    - si hay mas de un hilo, tengo forma de saber a cual despertare? No recuerda si hay alguna forma de configurar el semaforo para configurar esas polticas. Que datos les tengo que dar a uno cuando inicializo en java? Puedo pasar un valor 0?
-    - Los semaforos se pueden configurar para que sean una FIFO?
-    - semáforos, qué son y para qué se usan, qué operaciones puedo realizar con ellos, ownership
-    - Productor consumidor, dibujar, semáforos por buffer, importa orden de acceso a los semáforos? Si, primero buffer, y después mutex
+**Que es un Monitor?** 
+- Es un modulo de alto nivel que encapsulan los metodos de sincronizacion. (Todos los metodos de la clase monitor tienen la palabra reservada **synchronized** en la firma del metodo). Se necesita crear un objeto de tipo **Monitor** y luego utilizar los metodos **wait()** y **notify()** para obtener y liberar el lock del objeto.
 
-- Monitor
-    - como funcionan, 
-    - para qué se usan, 
-    - que tipos de colas existen
-    - cual es el beneficio de una cola de cortesía. 
-    - qué acciones puedo realizar sobre una cola de espera de condición (irme a dormir, despertar, preguntar por quienes están durmiendo)
-    - en el momento en que un hilo despierta a otro adentro del monitor, y uno nuevo toma el mutex, quien toma el control de la ejecución? la jvm, el dispatcher, estados de los procesos
-    - cuales son los beneficios de utilizar un monitor frente a semáforos?
+- **Monitor**
+    - Que tipos de colas existen en un monitor? -> Existen 2 tipos de colas en un monitor, la cola de espera de condicion y la cola de cortesia.
+    - Cual es el beneficio de una cola de cortesía? -> El beneficio de una cola de cortesia es que se le cede tiempo a uno que venga con urgencia.
+    - Qué acciones puedo realizar sobre una cola de espera de condición? -> Se puede mandar a dormir, despertar y preguntar por quienes están durmiendo.
+    - En el momento en que un hilo despierta a otro adentro del monitor, y uno nuevo toma el mutex, quien toma el control de la ejecución? -> El control lo define el dispatcher.
+    - cuales son los beneficios de utilizar un monitor frente a semáforos? -> El monitor tiene ventajas sobre el semaforo como por ejemplo que es mas facil de implementar, es mas seguro y es mas eficiente.
 
 
 
