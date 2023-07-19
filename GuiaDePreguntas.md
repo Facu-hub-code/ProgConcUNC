@@ -149,15 +149,41 @@ Productor consumidor con semaforos
 - Relacion entre automatas y el caso practico del estacionamiento.
 
 ## U5. Redes de Petri
-- Redes de petri temporales, clasificacion delay vs tiempo.
-- Semantica de tiempo debil y fuerte.
-- red de petri no autonoma
-- Conflictos
-- La red de petri es deterministica?
-- Una rdp es determinista,puede no ser deterministica?
-- que parte de la red puede tener el indeterminismo?  rta: si tiene conflictos es el indeterminista
-- Que es el grado de sensibilizado de una transicion
-- Fairness (permisos y parametros) Pregunta si tiene una herramienta para haer una red de petri, hacer un consumidor productor con buffer acotado
+**Que son las Redes de petri temporales?**
+- Las redes de petri temporales son aquellas en donde las transiciones pueden tener un tiempo de demora. Las redes de petri temporales se pueden clasificar en redes de petri temporales deterministas y redes de petri temporales no deterministas.
+
+**Clasificacion: Delay y Tiempo**
+- En una PN con delay, el tiempo asociado al firing de una transición indica el tiempo que
+tarda en concretarse el firing de esta transición
+- En una PN con tiempo (PNT) se especifica la duración del firing de una transición mediante
+la asociación de un intervalo que abarque todas las posibilidades de duración de la actividad. Esto
+presenta la ventaja de analizar un sistema en los peores escenarios.
+
+**Semantica de tiempo debil y fuerte**
+- La semantica de tiempo fuerte indica en que momento y con que condiciones se debe realizar el firing de la transicion. Esta semantica es apropiada para el modelado de sistemas en tiempo real.
+- En la semantica de tiempo debil la transicion no esta obligada a dispararse, pero, si lo hace, debe ser en el intervalo especificado.
+
+**Red de Petri Autonoma y No Autonoma**
+- Una Red de Petri es autonoma cuando sus instantes de firing sond esconocidos o noe stan indicados
+- Una Red de Petri No es autonoma cuando se disparan sus transiciones cumpliendo condiciones de sensibilizado y estan asociadas a un evento externo.
+
+**Conflictos**
+- Un conflicto estructural se da cuando una plaza tiene mas de una transicion de salida.
+
+**La red de petri es deterministica?**
+- Una red de petri es deterministica cuando no tiene conflictos, todas sus transiciones puede ser definidas logicamente.
+
+**Una rdp es determinista, puede no ser deterministica?**
+- Una red de petri deterministica puede no ser deterministica si tiene conflictos.
+
+*Qque parte de la red puede tener el indeterminismo?**
+- Si tiene conflictos es el indeterminista, entonces donde tenga conflictos
+
+**Que es el grado de sensibilizado de una transicion**
+- El grado de sensibilizado de una transicion es la cantidad de tokens que debe tener cada plaza de entrada para que la transicion este sensibilizada.
+
+**Fairness (permisos y parametros)**
+- El fairness es un mecanismo que permite que una transicion se dispare cuando se cumple una condicion. El fairness se puede implementar mediante un parametro o un permiso.
 
 ## Redes en PIPE
 ### Listas de Youtube para practicar
@@ -166,7 +192,7 @@ Productor consumidor con semaforos
 - [SLS Open](https://www.youtube.com/watch?v=2cb_Eit0j58&list=PL55DwcAO0cqw0db8MVIPdnigin8_0mAgU)
 - [Conferencia Redes de Petri Bs.As](https://www.youtube.com/watch?v=WnfS5qEB8Wc)
 - [Red de petri temporal](https://www.youtube.com/watch?v=WnfS5qEB8Wc)
-- [Ejemplos Luis Salinas] (https://www.youtube.com/watch?v=O_p56f0O6O0)
+- [Ejemplos Luis Salinas](https://www.youtube.com/watch?v=O_p56f0O6O0)
 
 - Productor consumidor con 3 lugares en el buffer.
     - Ver invariantes y propiedades
