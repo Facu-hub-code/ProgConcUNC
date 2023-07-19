@@ -105,18 +105,48 @@ Productor consumidor con semaforos
 
 
 ## U4. Gramatica, lenguajes y automatas
-- Definicion de automata y gramatica.
+**Definicion de automata y gramatica**
+- Un **automata** es una construccion logica que permite representar un sistema que recibe una entrada y genera una salida. Un automata esta compuesto por un conjunto de estados, un alfabeto de entrada, un alfabeto de salida y una funcion de transicion. Los automatas se pueden clasificar en deterministas y no deterministas.
+- Una **gramatica** es un conjunto de reglas que permiten generar un lenguaje. Las gramaticas se pueden clasificar en regulares, libres de contexto, sensibles al contexto y recursivamente enumerables.
+
+**Maquians de estado**
+- Una maquina de estado es un modelo matematico que permite representar un sistema que se encuentra en un estado determinado y que puede cambiar de estado en funcion de una entrada. Las maquinas de estado se pueden clasificar en maquinas de moore y maquinas de mealy.
+
+**Maquinas de Moore vs Maquinas de Mealy**
+- Las maquinas de Moore son maquinas de estado finito que se caracterizan por tener una salida que depende unicamente del estado actual. Las maquinas de Moore se pueden representar mediante un diagrama de estados o mediante una tabla de estados.
+- Las maquinas de Mealy son maquinas de estado finito que se caracterizan por tener una salida que depende del estado actual y de la entrada. Las maquinas de Mealy se pueden representar mediante un diagrama de estados o mediante una tabla de estados.
+
+**Cual es mas segura de usar?**
+- La maquina de Moore es mas segura de usar porque la salida depende unicamente del estado actual, mientras que en la maquina de Mealy la salida depende del estado actual y de la entrada.
+
+**Maquina de Turing**
+- Una maquina de Turing o automata de tipo 0 es un automata con cabezal movil que se mueve libremente sobre una cinta infinita. La funcion de transicion que depende del estado actual y del simbolo que se encuentra en la cinta.
+
+**Automata lineal acotado**
+- Un automata acotado es un automata con cabezal movil que se mueve sobre una cinta acotada. La funcion de transicion que depende del estado actual y del simbolo que se encuentra en la cinta.
+
+**Automata de pila**
+- Un automata de pila es un automata con cabezal movil que se mueve sobre una cinta acotada y que tiene una pila. Esto lo limita a ser un automata de tipo 1. La funcion de transicion que depende del estado actual, del simbolo que se encuentra en la cinta y del simbolo que se encuentra en el tope de la pila.
+
+**Automata finito**
+- Un automata finito es un automata con cabezal movil que se mueve sobre una cinta acotada en una sola direccion y que no tiene memoria. 
+
+**Jerarquia de Chomsky**
+- La jerarquia de Chomsky es una clasificacion de los lenguajes formales en funcion de la complejidad de las gramaticas que los generan. La jerarquia de Chomsky se compone de 4 niveles: lenguajes regulares, lenguajes libres de contexto, lenguajes sensibles al contexto y lenguajes recursivamente enumerables.
+
+
+**Relacionar simbolo, palabra, vocaculario, universo del discurso, gramatica y lenguaje**
+- **Simbolo**: Un simbolo es la unidad mas pequeña de un lenguaje.
+- **Palabra**: Una palabra es una secuencia de simbolos.
+- **Vocabulario**: Un vocabulario es un conjunto de simbolos.
+- **Universo del discurso**: El universo del discurso es el conjunto de todas las palabras que pueden ser generadas por una gramatica.
+- **Gramatica**: Una gramatica es un conjunto de reglas que permiten generar un lenguaje.
+- **Lenguaje**: Un lenguaje es un conjunto de palabras que respetan una gramatica en particular.
+
+**La gramatica para que sirve? quien la usa?**
+- La gramatica sirve para generar un lenguaje. La gramatica es utilizada por un automata para reconocer un lenguaje.
+
 - Relacion entre automatas y el caso practico del estacionamiento.
-- Maquinas de estado.
-- Maquina de moore vs mealy, cual es mas segura de usar?
-    - Maquinas de Moore
-    - Maquinas de Mealy
-    - Maquina de Turing, acotado, pila, finito.
-- Automatas de tipo 0 y 1 (explicacion de las jerarquias)
-- qué es el universo del discurso, autómatas, jerarquías de gramáticas.
-- cómo funciona un autómata de pila
-- Relacionar simbolo, palabra, vocaculario, universo de .... , gramatica y lenguaje
-- La gramatica para que sirve? quien la usa?
 
 ## U5. Redes de Petri
 - Redes de petri temporales, clasificacion delay vs tiempo.
@@ -130,6 +160,14 @@ Productor consumidor con semaforos
 - Fairness (permisos y parametros) Pregunta si tiene una herramienta para haer una red de petri, hacer un consumidor productor con buffer acotado
 
 ## Redes en PIPE
+### Listas de Youtube para practicar
+- [Juan Rivera Tecnologia](https://www.youtube.com/watch?v=oLOYJmmcgmo&list=PLmg7O-zMXJjuTuJFhtRspMTr2RfjX_Naa)
+- [SocialLearningService](https://www.youtube.com/watch?v=pgFfMc6J3YU&list=PLj1yRsEYVjuVUqFTwAz8a6qoSv9F4gDAU)
+- [SLS Open](https://www.youtube.com/watch?v=2cb_Eit0j58&list=PL55DwcAO0cqw0db8MVIPdnigin8_0mAgU)
+- [Conferencia Redes de Petri Bs.As](https://www.youtube.com/watch?v=WnfS5qEB8Wc)
+- [Red de petri temporal](https://www.youtube.com/watch?v=WnfS5qEB8Wc)
+- [Ejemplos Luis Salinas] (https://www.youtube.com/watch?v=O_p56f0O6O0)
+
 - Productor consumidor con 3 lugares en el buffer.
     - Ver invariantes y propiedades
     - Convertir la red en segura
