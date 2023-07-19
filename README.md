@@ -4,15 +4,15 @@ La idea principal de este Repositorio/Proyecto OpenSource es tener un lugar dond
 
 ## Contenido
 - teoricos/
-	- ResumenFranBonino.pdf [@akmsw](https://github.com/akmsw)
+	- ResumenMateriaCompleta.pdf [@akmsw](https://github.com/akmsw)
 	- bibliografia.png
 - practicos/
-	- GuiaPreguntas.md [@facu-hub-code](https:github.com/Facu-hub-code)
+	- GuiaPreguntasColoquio.md [@facu-hub-code](https:github.com/Facu-hub-code)
 	- RedesDePetri/
 		- productor_consumidor.xml 
 		- cena_filosofos.xml
 		- barberia.xml
 		- escritura_lectura.xml
-- [link del preguntero](https://docs.google.com/document/d/1dMvB69jC6K6AQv6SJNST09_SznFLcs0rXoGxXJOS_n8/edit) 
+- [link del preguntero_coloquio](https://docs.google.com/document/d/1dMvB69jC6K6AQv6SJNST09_SznFLcs0rXoGxXJOS_n8/edit) 
 
 Las modificaciones y recomendaciones son bienvenidas.
