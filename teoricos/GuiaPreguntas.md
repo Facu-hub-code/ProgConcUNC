@@ -84,7 +84,7 @@ Mientras que el metodo **run()** es el encargado de ejecutar el codigo del hilo.
     - Si hay mas de un hilo, tengo forma de saber a cual despertare? -> No recuerda si hay alguna forma de configurar el semaforo para configurar esas polticas. Que datos les tengo que dar a uno cuando inicializo en java? Puedo pasar un valor 0? (no se)
     - Los semaforos se pueden configurar para que sean una FIFO? -> Si, los semaforos se pueden configurar para que sean una FIFO de la siguiente manera: 
     ```java
-    Semaphore semaforo = new Semaphore(0, true);
+    Semaphore semaforo = new Semaphore(0, true); // true para FIFO
     ```
     - Que es el ownership de un semaforo? -> El ownership de un semaforo es el hilo que lo tiene tomado.
 
