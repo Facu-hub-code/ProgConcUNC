@@ -33,3 +33,11 @@ La red de petri "Problema de la barberia" modela una barberia donde hay n=2 barb
 8. ¿Existen transiciones conflictivas?
 
 9. ¿La red tiene invariante de marcado?
+
+10. Clasificacion:
+    - Maquina de estado: NO
+    - Grafo de marcado: NO
+    - Libre eleccion: NO
+    - Libre eleccion extendida: NO
+    - Red de Petri Simple : SI
+    - Red de Petri Simple Extendida: SI

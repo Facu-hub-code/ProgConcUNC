@@ -24,3 +24,11 @@ La red de petri "Cena de los Filosofos" modela una cena en donde hay 5 filosofos
 8. ¿Existen transiciones conflictivas?
 
 9. ¿La red tiene invariante de marcado?
+
+10. Clasificacion:
+    - Maquina de estado: NO
+    - Grafo de marcado: NO
+    - Libre eleccion: NO
+    - Libre eleccion extendida: NO
+    - Red de Petri Simple : NO
+    - Red de Petri Simple Extendida: NO
