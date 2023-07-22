@@ -26,4 +26,3 @@ resultados_encontrados = buscar_expresion_regular(ruta_archivo, expresion_regula
 print("Resultados encontrados:")
 for resultado in resultados_encontrados:
     print(resultado)
-
