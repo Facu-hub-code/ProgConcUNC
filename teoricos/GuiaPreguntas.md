@@ -15,7 +15,7 @@
 **Que es la vivacidad y el deadlock?**
 - La **Vivacidad** en los sistemas concurrentes se refiere a que el sistema va a avanzar, es decir, que no se quedara trabado en un estado.
 
-- El **DeadLock** o interbloqueo es un estado en el que se encuentran dos o mas procesos o hilos. Se encuentran bloqueandose mutuamente, es decir, que ninguno puede avanzar debido a que esta esperando que el otro termine o envie un mensaje.
+- El **DeadLock** o interbloqueo es una situacion en la que dos o mas hilos estan esperando por un recurso que no se va a liberar nunca.
 
 **Un problema concurrente se ejecuta siempre igual?**
 - NO, un problema concurrente puede ejecutarse de diferentes formas, debido al indeterminismo que existe a la hora de ejecutarse los hilos.
@@ -88,16 +88,49 @@ Mientras que el metodo **run()** es el encargado de ejecutar el codigo del hilo.
     ```
     - Que es el ownership de un semaforo? -> El ownership de un semaforo es el hilo que lo tiene tomado.
 
+## Monitores
+
 **Que es un Monitor?** 
 - Es un modulo de alto nivel que encapsulan los metodos de sincronizacion. (Todos los metodos de la clase monitor tienen la palabra reservada **synchronized** en la firma del metodo). Se necesita crear un objeto de tipo **Monitor** y luego utilizar los metodos **wait()** y **notify()** para obtener y liberar el lock del objeto.
 
-- **Monitor**
-    - Que tipos de colas existen en un monitor? -> Existen 2 tipos de colas en un monitor, la cola de espera de condicion y la cola de cortesia.
-    - Cual es el beneficio de una cola de cortesía? -> El beneficio de una cola de cortesia es que se le cede tiempo a uno que venga con urgencia.
-    - Qué acciones puedo realizar sobre una cola de espera de condición? -> Se puede mandar a dormir, despertar y preguntar por quienes están durmiendo.
-    - En el momento en que un hilo despierta a otro adentro del monitor, y uno nuevo toma el mutex, quien toma el control de la ejecución? -> El control lo define el dispatcher.
-    - cuales son los beneficios de utilizar un monitor frente a semáforos? -> El monitor tiene ventajas sobre el semaforo como por ejemplo que es mas facil de implementar, es mas seguro y es mas eficiente.
+Ejemplo de un monitor:
+```java
+public class Monitor {
+    private int contador = 0;
 
+    public synchronized void incrementar() {
+        contador++;
+    }
+
+    public synchronized void decrementar() {
+        contador--;
+    }
+
+    public synchronized int getContador() {
+        return contador;
+    }
+}
+```
+- Que tipos de colas existen en un monitor? -> Existen 2 tipos de colas en un monitor, la cola de espera de condicion y la cola de cortesia.
+- Cual es el beneficio de una cola de cortesía? -> El beneficio de una cola de cortesia es que se le cede tiempo a uno que venga con urgencia.
+- Qué acciones puedo realizar sobre una cola de espera de condición? -> Se puede mandar a dormir, despertar y preguntar por quienes están durmiendo.
+- En el momento en que un hilo despierta a otro adentro del monitor, y uno nuevo toma el mutex, quien toma el control de la ejecución? -> El control lo define el dispatcher.
+- Cuales son los beneficios de utilizar un monitor frente a semáforos? -> El monitor tiene ventajas sobre el semaforo como por ejemplo que es mas facil de implementar, es mas seguro y es mas eficiente.
+
+**Que es un Monitor con prioridad?**
+- Es un monitor que tiene una cola de cortesia, es decir, que cuando un hilo se despierta, se le cede el mutex al hilo que tiene mayor prioridad.
+
+**Que es un Monitor con prioridad condicional?**
+- Es un monitor que tiene una cola de cortesia y una cola de espera de condicion, es decir, que cuando un hilo se despierta, se le cede el mutex al hilo que tiene mayor prioridad y si hay mas de un hilo con la misma prioridad, se le cede el mutex al hilo que esta esperando en la cola de espera de condicion.
+
+**Politicas Signal**
+- **Signal:** Despierta a un hilo que esta esperando en la cola de espera de condicion.
+
+- **SignalAll:** Despierta a todos los hilos que estan esperando en la cola de espera de condicion.
+
+- **SignalAllPriority:** Despierta a todos los hilos que estan esperando en la cola de espera de condicion y se le cede el mutex al hilo que tiene mayor prioridad.
+
+- **SignalAllPriorityConditional:** Despierta a todos los hilos que estan esperando en la cola de espera de condicion y se le cede el mutex al hilo que tiene mayor prioridad y si hay mas de un hilo con la misma prioridad, se le cede el mutex al hilo que esta esperando en la cola de espera de condicion.
 
 
 ## U4. Gramatica, lenguajes y automatas
@@ -180,24 +213,3 @@ presenta la ventaja de analizar un sistema en los peores escenarios.
 
 **Fairness (permisos y parametros)**
 - El fairness es un mecanismo que permite que una transicion se dispare cuando se cumple una condicion. El fairness se puede implementar mediante un parametro o un permiso.
-
-## Redes en PIPE
-### Listas de Youtube para practicar
-- [Juan Rivera Tecnologia](https://www.youtube.com/watch?v=oLOYJmmcgmo&list=PLmg7O-zMXJjuTuJFhtRspMTr2RfjX_Naa)
-- [SocialLearningService](https://www.youtube.com/watch?v=pgFfMc6J3YU&list=PLj1yRsEYVjuVUqFTwAz8a6qoSv9F4gDAU)
-- [SLS Open](https://www.youtube.com/watch?v=2cb_Eit0j58&list=PL55DwcAO0cqw0db8MVIPdnigin8_0mAgU)
-- [Conferencia Redes de Petri Bs.As](https://www.youtube.com/watch?v=WnfS5qEB8Wc)
-- [Red de petri temporal](https://www.youtube.com/watch?v=WnfS5qEB8Wc)
-- [Ejemplos Luis Salinas](https://www.youtube.com/watch?v=O_p56f0O6O0)
-
-- Productor consumidor con 3 lugares en el buffer.
-    - Ver invariantes y propiedades
-    - Convertir la red en segura
-    - Meter un deadlock.
-- Red de la barberia
-- Cena de los Filosofos
-    - Se puede representar con una red de petri coloreada? Si, se puede.
-    - En la red de filosofos, invariantes de transicion, para que sirven y si tienen. Invariantes de plaza, que es lo que son? Relacionar con filosofos. explicacion fisica de que significa.
-    - preguntó si estaba acotada, si tenía deadlock, si era segura, si era de libre elección, liveness
-    - ya que se repetían las estructuras, cómo podia hacer para que con una sola represente a los 3 filósofos? haciendola coloreada
-    - mostrar los invariantes de plaza y de transición, decir qué eran y que representaban fisicamente
